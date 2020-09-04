@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware ,combineReducers } from 'redux';
 import {Provider} from 'react-redux';
 import {createLogger} from 'redux-logger';
 import thunkMiddleware from 'redux-thunk'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
-import { reduce } from './reducers';
+import { reduce , resolve } from './reducers';
 
 
-// const rootReducer = combineReducers({ searchRobots,requestRobots });
+const rootReducer = combineReducers({ reduce,resolve });
 const logger = createLogger();
-const store = createStore( reduce , applyMiddleware(thunkMiddleware ,logger));
+const store = createStore( rootReducer , applyMiddleware(thunkMiddleware ,logger));
 console.log('store',store.getState());
 ReactDOM.render(
   <Provider store={store}>

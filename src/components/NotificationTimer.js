@@ -2,32 +2,39 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import "./NotificationTimer.css";
-import { toggleTimer } from '../actions';
+import { toggleTimer ,requestAPI } from '../actions';
 
 
 const mapStateToProps = (state)=>{
     console.log(state)
     return {
-      timerKey:state.timerKey,
-      timerOn:state.timerOn
+      timerKey:state.reduce.timerKey,
+      timerOn:state.reduce.timerOn,
+      apiResponse:state.resolve.apiResponse
     }
   }
   
   const mapDispatchToProps = (dispatch)=>{
     return {
-        onTimerButton:()=>dispatch(toggleTimer())
+        onTimerButton:()=>dispatch(toggleTimer()),
+        onRequest:(url)=>requestAPI(dispatch,url)
     }
   }
   
 
 
 class NotificationTimer extends Component {
+
+    componentDidMount(){
+        console.log('requesting')
+        this.props.onRequest('https://jsonplaceholder.typicode.com/users');
+    }
     
     renderTime = ({ remainingTime }) => {
         if (remainingTime === 0) {
           return (
             <div className="timer">
-              Time's <br/>UP
+              Time's <br/>UP :)
             </div>
           );
         }
