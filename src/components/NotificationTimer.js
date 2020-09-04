@@ -27,7 +27,7 @@ class NotificationTimer extends Component {
 
     componentDidMount(){
         console.log('requesting')
-        this.props.onRequest('https://jsonplaceholder.typicode.com/users');
+        // this.props.onRequest('https://postman-echo.com/oauth1');
     }
     
     renderTime = ({ remainingTime }) => {
