@@ -1,0 +1,7 @@
+FSzHKhaTwqxIcb0_NLwhQ
+4DxKBid5O0z9FiNWgeLFSD6JZuk9bDt9
+https://github.com/Altruy/muntry/oauth-redirect
+
+ID
+Secret
+OAuth redirect url
